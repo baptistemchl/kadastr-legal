@@ -21,6 +21,8 @@
   ul { padding-left:20px; }
   hr { border:0; border-top:1px solid var(--line); margin:28px 0; }
   .date { color:var(--muted); font-size:14px; }
+  .notice { background:#FBEEE8; border:1px solid #E7C9BD; border-radius:10px;
+    padding:14px 16px; margin:18px 0; }
 </style>
 </head>
 <body>
@@ -35,6 +37,13 @@
   <p>Kadastr (« l'application ») est édité par <strong>agenceixp</strong>. L'application
   analyse une annonce immobilière à partir de données publiques ouvertes françaises.
   Cette politique explique quelles informations sont traitées et comment.</p>
+
+  <div class="notice">
+    <strong>Application indépendante.</strong> Kadastr n'est ni affilié, ni approuvé, ni
+    géré par une administration ou une entité gouvernementale. L'application se contente
+    d'agréger et de présenter des données publiques ouvertes ; elle ne représente aucun
+    service de l'État et ne fournit aucun service public officiel.
+  </div>
 
   <h2>1. Aucune donnée personnelle collectée</h2>
   <p>Kadastr ne demande <strong>aucun compte</strong>, ne collecte <strong>ni nom, ni email,
@@ -57,10 +66,38 @@
   appareil pour en extraire les caractéristiques publiques du bien (prix, surface, type,
   DPE, localisation approximative). Kadastr n'accède pas à votre compte du site d'annonces.</p>
 
-  <h2>4. Sources de données publiques</h2>
-  <p>Les analyses reposent sur des données publiques officielles, notamment : DVF
-  (valeurs foncières), ADEME (DPE), Géorisques, IGN / cadastre, INSEE, Base Adresse
-  Nationale, Hub'Eau, ARCEP, SSMSI, Ministère de l'Intérieur, OpenStreetMap.</p>
+  <h2>4. Sources officielles des données</h2>
+  <p>Les analyses reposent sur des données publiques ouvertes, dont les sources
+  officielles sont les suivantes :</p>
+  <ul>
+    <li>Valeurs foncières / ventes (DVF) — data.gouv.fr :
+      <a href="https://www.data.gouv.fr/fr/datasets/demandes-de-valeurs-foncieres/">demandes-de-valeurs-foncieres</a></li>
+    <li>Risques naturels et technologiques — Géorisques :
+      <a href="https://www.georisques.gouv.fr">georisques.gouv.fr</a></li>
+    <li>Diagnostic de performance énergétique (DPE) — ADEME :
+      <a href="https://data.ademe.fr">data.ademe.fr</a></li>
+    <li>Cadastre et cartographie — IGN :
+      <a href="https://cadastre.data.gouv.fr">cadastre.data.gouv.fr</a></li>
+    <li>Adresses — Base Adresse Nationale :
+      <a href="https://adresse.data.gouv.fr">adresse.data.gouv.fr</a></li>
+    <li>Démographie et revenus — INSEE :
+      <a href="https://www.insee.fr">insee.fr</a></li>
+    <li>Délinquance / sécurité — Ministère de l'Intérieur (SSMSI) :
+      <a href="https://www.data.gouv.fr/fr/datasets/bases-statistiques-communale-et-departementale-de-la-delinquance-enregistree-par-la-police-et-la-gendarmerie-nationales/">bases statistiques de la délinquance</a></li>
+    <li>Résultats des élections municipales — Ministère de l'Intérieur :
+      <a href="https://www.resultats-elections.interieur.gouv.fr">resultats-elections.interieur.gouv.fr</a></li>
+    <li>Qualité de l'eau potable — Hub'Eau :
+      <a href="https://hubeau.eaufrance.fr">hubeau.eaufrance.fr</a></li>
+    <li>Couverture fibre — ARCEP :
+      <a href="https://cartefibre.arcep.fr">cartefibre.arcep.fr</a></li>
+    <li>Qualité de l'air — Open-Meteo (fournisseur indépendant) :
+      <a href="https://open-meteo.com">open-meteo.com</a></li>
+    <li>Commerces et services — OpenStreetMap (projet indépendant) :
+      <a href="https://www.openstreetmap.org">openstreetmap.org</a></li>
+  </ul>
+  <p>Kadastr n'est ni affilié, ni approuvé, ni soutenu par ces organismes. Les
+  informations présentées sont indicatives et doivent être vérifiées auprès des
+  sources officielles avant tout achat.</p>
 
   <h2>5. Stockage</h2>
   <p>Les rapports consultés et vos achats sont mémorisés <strong>localement sur votre
