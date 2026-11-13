@@ -32,7 +32,7 @@
     <strong>Kadastr</strong>
   </header>
   <h1>Politique de confidentialité</h1>
-  <p class="date">Dernière mise à jour : 10 novembre 2026</p>
+  <p class="date">Dernière mise à jour : 13 novembre 2026</p>
 
   <p>Kadastr (« l'application ») est édité par <strong>agenceixp</strong>. L'application
   analyse une annonce immobilière à partir de données publiques ouvertes françaises.
@@ -48,7 +48,8 @@
   <h2>1. Pas de compte, pas de pistage</h2>
   <p>Kadastr ne demande <strong>aucun compte</strong>, ne collecte <strong>ni nom, ni email,
   ni contact, ni identifiant publicitaire</strong>, et n'intègre aucun outil de pistage ni
-  publicité. Seuls des rapports d'erreur techniques sont transmis (section 7).</p>
+  publicité. Seuls des rapports d'erreur techniques (section 7) et, pour le rapport
+  offert, une empreinte technique de l'appareil (section 6) sont transmis.</p>
 
   <h2>2. Données techniques traitées pour l'analyse</h2>
   <p>Pour produire un rapport, l'application transmet à son service d'analyse des
@@ -112,6 +113,22 @@
   <p>Le rapport complet est un achat à l'acte géré par <strong>Google Play</strong>. Les
   informations de paiement sont traitées par Google, jamais par Kadastr. Voir la
   politique de confidentialité de Google.</p>
+  <p><strong>Premier rapport offert.</strong> Le premier rapport complet est offert, une
+  fois par appareil. Pour éviter qu'il soit obtenu plusieurs fois, l'application
+  transmet au service d'analyse :</p>
+  <ul>
+    <li>l'identifiant technique de l'application sur votre appareil (Android ID),
+    qui n'est <strong>jamais conservé tel quel</strong> : seule une empreinte
+    irréversible (hachage) est enregistrée ;</li>
+    <li>un jeton <strong>Google Play Integrity</strong>, qui permet de vérifier auprès de
+    Google que la demande vient bien de l'application Kadastr installée depuis Google Play
+    sur un appareil authentique.</li>
+  </ul>
+  <p>Seuls l'empreinte de l'appareil, l'empreinte du bien offert (qui ne révèle pas son
+  adresse) et la date sont conservés, sur les serveurs de Google Cloud (Firestore), pour
+  la durée de l'offre et dans ce seul but (intérêt légitime : réserver l'offre à une
+  utilisation par appareil). Ces données ne permettent pas de vous identifier et ne sont
+  utilisées à aucune autre fin.</p>
 
   <h2>7. Rapports d'erreur</h2>
   <p>Quand l'application rencontre une erreur, un rapport technique est envoyé à
