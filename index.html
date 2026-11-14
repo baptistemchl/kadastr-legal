@@ -61,7 +61,9 @@
   <ul>
     <li>la localisation du bien : coordonnées et adresse que vous avez choisies, ou
     position approximative (secteur / commune) donnée par l'annonce ;</li>
-    <li>le cas échéant, le lien de l'annonce, le prix et la surface indiqués.</li>
+    <li>le cas échéant, le prix et la surface indiqués. Le lien de l'annonce n'est plus
+    transmis depuis la version 1.2 ; les versions antérieures l'envoient, mais le service
+    ne s'en sert pas et ne le conserve pas.</li>
   </ul>
   <p>Ces informations concernent le logement analysé, pas l'utilisateur. Elles servent
   uniquement à croiser les données publiques et à calculer le rapport. Elles ne sont pas
@@ -75,10 +77,26 @@
   États-Unis (serveur situé dans l'Oregon) ; ces prestataires encadrent ces transferts par les clauses
   contractuelles types de la Commission européenne. Le service garde en mémoire, au plus
   24 heures, les résultats des données publiques pour une position (pour répondre plus
-  vite à la demande suivante), et l'adresse IP de connexion, au plus 24 heures, pour
-  limiter les abus (nombre de demandes par adresse). Les journaux techniques de
+  vite à la demande suivante), l'adresse IP de connexion, au plus 24 heures, pour
+  limiter les abus (nombre de demandes par adresse), et, pour un appareil qui a demandé
+  le rapport offert, l'empreinte de l'appareil et celle du bien offert, au plus
+  24 heures, pour ne pas refaire la vérification à chaque ouverture. Les journaux techniques de
   l'hébergeur (adresse IP, heure, page demandée, sans le contenu des demandes) sont
   conservés pour une durée limitée fixée par l'hébergeur.</p>
+
+  <p><strong>Services tiers appelés directement depuis l'application.</strong> Certains
+  services publics ou collaboratifs sont interrogés par votre appareil lui-même, sans
+  passer par le service d'analyse ; ils reçoivent votre adresse IP et ce qui est indiqué
+  ci-dessous, et appliquent leur propre politique :</p>
+  <ul>
+    <li><strong>Base Adresse Nationale</strong> (api-adresse.data.gouv.fr, État
+    français) : le texte que vous tapez pour chercher une adresse, et les coordonnées
+    du point que vous touchez sur la carte ;</li>
+    <li><strong>OpenStreetMap France</strong> (tile.openstreetmap.fr, association
+    OpenStreetMap France) : les images de la carte de la zone affichée ;</li>
+    <li><strong>Leboncoin</strong> : la page de l'annonce que vous ouvrez, affichée sur
+    votre appareil comme dans un navigateur (section 3).</li>
+  </ul>
 
   <h2>3. Extraction d'annonce</h2>
   <p>Lorsque vous collez un lien d'annonce, la page est ouverte localement sur votre
@@ -126,7 +144,8 @@
   <h2>5. Stockage</h2>
   <p>Les rapports achetés ou offerts et vos achats sont mémorisés <strong>localement sur
   votre appareil</strong> (« Mes rapports », lecture hors ligne). Ces fichiers sont inclus
-  dans la sauvegarde Android de votre appareil si vous l'avez activée. Le service
+  dans la sauvegarde Android de votre appareil si vous l'avez activée. Vous pouvez
+  retirer un rapport de « Mes rapports » (sa copie sur l'appareil est effacée). Le service
   d'analyse peut mettre en cache temporairement des résultats de données publiques, sans
   information personnelle.</p>
 
@@ -154,8 +173,11 @@
   nous ne conservons pas (les essais accordés avant la mise à jour du service de
   novembre 2026 la gardent non chiffrée). Ce sont des données
   <strong>pseudonymisées</strong> : elles ne contiennent ni nom ni contact et ne servent
-  à aucune autre fin. Elles sont supprimées au plus tard 3 ans après leur
-  enregistrement.</p>
+  à aucune autre fin. Elles sont conservées 3 ans à compter de leur enregistrement ;
+  passé ce délai, le service d'analyse les supprime lors de son contrôle quotidien des
+  données expirées. Pour rouvrir le rapport offert sans nouvelle vérification,
+  l'application garde sur votre appareil un ticket signé par le service (il ne contient
+  que l'empreinte du bien offert et sa date de validité).</p>
 
   <p><strong>Restauration des rapports achetés.</strong> Pour vous rendre vos rapports
   achetés si vous réinstallez l'application sur le même appareil, chaque achat vérifié
@@ -174,7 +196,8 @@
     que la demande vient bien de cet appareil ;</li>
     <li>ces données sont conservées sur les serveurs de Google Cloud (Firestore, Union
     européenne), uniquement pour vous rendre vos achats (exécution du contrat d'achat),
-    et supprimées au plus tard 3 ans après l'achat.</li>
+    et conservées 3 ans à compter de l'achat ; passé ce délai, le service d'analyse les
+    supprime lors de son contrôle quotidien des données expirées.</li>
   </ul>
   <p>Dans l'achat Google Play lui-même, l'application inscrit l'empreinte du bien
   acheté, pour que l'achat ne débloque que ce logement. C'est une donnée pseudonyme :
@@ -204,10 +227,22 @@
   <h2>8. Vos droits (RGPD)</h2>
   <p>Kadastr ne détient ni nom, ni adresse électronique, ni compte : il n'y a pas de profil
   utilisateur. Les seules données conservées sont pseudonymisées (essai gratuit, achats
-  enregistrés : sections 6). Vous pouvez à tout moment effacer les données locales en
-  désinstallant l'application, et demander la suppression des données conservées ou y
-  accéder en nous écrivant ci-dessous (indiquez-nous comment vous joindre ; nous vous
-  guiderons pour identifier votre appareil).</p>
+  enregistrés : section 6). Vous disposez d'un droit d'accès, de rectification,
+  d'effacement, de limitation et d'opposition.</p>
+  <p><strong>Comment exercer vos droits.</strong> Dans l'application (version 1.2 ou
+  suivante), ouvrez <em>À propos</em>, rubrique <em>Vos données</em> : elle affiche
+  l'<strong>identifiant d'assistance</strong> de votre appareil (l'empreinte sous
+  laquelle vos données sont rangées, qui ne révèle pas l'Android ID). Copiez-le ou
+  touchez « Demander l'accès ou l'effacement » pour nous l'envoyer par e-mail, en
+  précisant votre demande. Nous vous indiquons ce qui est conservé (essai offert,
+  achats enregistrés, avec leurs dates) ou nous l'effaçons, dans un délai d'un mois.
+  Le contenu étant chiffré avec une clé que nous ne conservons pas, nous ne pouvons pas
+  le lire : l'application vous montre déjà vos rapports. Après effacement, vos achats
+  restent valables chez Google Play. Avec une version plus ancienne, écrivez-nous :
+  nous vous indiquerons comment obtenir cet identifiant.</p>
+  <p>Vous pouvez aussi effacer les données de votre appareil en retirant un rapport de
+  « Mes rapports » ou en désinstallant l'application, et introduire une réclamation
+  auprès de la CNIL (<a href="https://www.cnil.fr/">cnil.fr</a>).</p>
 
   <h2>9. Contact</h2>
   <p>agenceixp — <a href="mailto:agenceixp.app@gmail.com">agenceixp.app@gmail.com</a></p>
