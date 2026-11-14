@@ -48,8 +48,12 @@
   <h2>1. Pas de compte, pas de pistage</h2>
   <p>Kadastr ne demande <strong>aucun compte</strong>, ne collecte <strong>ni nom, ni email,
   ni contact, ni identifiant publicitaire</strong>, et n'intègre aucun outil de pistage ni
-  publicité. Seuls des rapports d'erreur techniques (section 7) et, pour le rapport
-  offert, une empreinte technique de l'appareil (section 6) sont transmis.</p>
+  publicité. En plus des informations sur le bien analysé (section 2), l'application
+  transmet des rapports d'erreur techniques (section 7) et l'identifiant technique de
+  l'application sur votre appareil (Android ID), pour le rapport offert et pour
+  enregistrer puis vous rendre vos rapports achetés (section 6). L'Android ID est
+  transmis tel quel au service d'analyse (connexion chiffrée), qui ne le conserve
+  jamais : il n'en garde qu'une empreinte irréversible.</p>
 
   <h2>2. Données techniques traitées pour l'analyse</h2>
   <p>Pour produire un rapport, l'application transmet à son service d'analyse des
@@ -61,7 +65,20 @@
   </ul>
   <p>Ces informations concernent le logement analysé, pas l'utilisateur. Elles servent
   uniquement à croiser les données publiques et à calculer le rapport. Elles ne sont pas
-  revendues ni utilisées à des fins publicitaires.</p>
+  revendues ni utilisées à des fins publicitaires. Pour un rapport acheté, elles sont
+  aussi enregistrées, chiffrées, pour vous le rendre après une réinstallation
+  (section 6).</p>
+  <p><strong>Hébergement du service d'analyse.</strong> Le service d'analyse est hébergé
+  par <strong>Render</strong> (Render Services, Inc., États-Unis), derrière le réseau de
+  <strong>Cloudflare</strong> (Cloudflare, Inc., États-Unis). Les informations ci-dessus
+  et l'adresse IP de connexion peuvent donc être traitées hors de l'Union européenne,
+  notamment aux États-Unis ; ces prestataires encadrent ces transferts par les clauses
+  contractuelles types de la Commission européenne. Le service garde en mémoire, au plus
+  24 heures, les résultats des données publiques pour une position (pour répondre plus
+  vite à la demande suivante), et l'adresse IP de connexion, au plus 24 heures, pour
+  limiter les abus (nombre de demandes par adresse). Les journaux techniques de
+  l'hébergeur (adresse IP, heure, page demandée, sans le contenu des demandes) sont
+  conservés pour une durée limitée fixée par l'hébergeur.</p>
 
   <h2>3. Extraction d'annonce</h2>
   <p>Lorsque vous collez un lien d'annonce, la page est ouverte localement sur votre
@@ -96,8 +113,9 @@
       <a href="https://hubeau.eaufrance.fr/page/api-qualite-eau-potable">API qualité de l'eau potable</a></li>
     <li>Couverture fibre — ARCEP, sur data.gouv.fr :
       <a href="https://www.data.gouv.fr/datasets/ma-connexion-internet">Ma connexion internet</a></li>
-    <li>Qualité de l'air — Open-Meteo (service privé, non gouvernemental) :
-      <a href="https://open-meteo.com/en/docs/air-quality-api">open-meteo.com</a></li>
+    <li>Qualité de l'air — mesures des stations de surveillance (AASQA, LCSQA / Geod'air),
+      sur data.gouv.fr, Licence Ouverte :
+      <a href="https://www.data.gouv.fr/datasets/donnees-temps-reel-de-mesure-des-concentrations-de-polluants-atmospheriques-reglementes-1">mesures temps réel des polluants atmosphériques réglementés</a></li>
     <li>Commerces, écoles et transports — OpenStreetMap (projet collaboratif, non gouvernemental) :
       <a href="https://www.openstreetmap.org/">openstreetmap.org</a></li>
   </ul>
@@ -127,12 +145,17 @@
     Google que la demande vient bien de l'application Kadastr installée depuis Google Play
     sur un appareil authentique.</li>
   </ul>
-  <p>Seuls l'empreinte de l'appareil, l'empreinte du bien offert (qui ne révèle pas son
-  adresse) et la date sont conservés, sur les serveurs de Google Cloud (Firestore, Union
-  européenne), dans ce seul but (intérêt légitime : réserver l'offre à une utilisation
-  par appareil). Ce sont des données <strong>pseudonymisées</strong> : elles ne
-  contiennent ni nom ni contact et ne servent à aucune autre fin. Elles sont supprimées
-  au plus tard 3 ans après leur enregistrement.</p>
+  <p>Seuls l'empreinte de l'appareil, l'empreinte du bien offert et la date sont
+  conservés, sur les serveurs de Google Cloud (Firestore, Union européenne), dans ce seul
+  but (intérêt légitime : réserver l'offre à une utilisation par appareil).
+  L'empreinte du bien est calculée à partir de ses coordonnées : comparée à la Base
+  Adresse Nationale, qui est publique, elle permettrait de retrouver l'adresse. C'est
+  pourquoi elle est <strong>chiffrée</strong> avec une clé dérivée de l'Android ID, que
+  nous ne conservons pas (les essais accordés avant la mise à jour du service de
+  novembre 2026 la gardent non chiffrée). Ce sont des données
+  <strong>pseudonymisées</strong> : elles ne contiennent ni nom ni contact et ne servent
+  à aucune autre fin. Elles sont supprimées au plus tard 3 ans après leur
+  enregistrement.</p>
 
   <p><strong>Restauration des rapports achetés.</strong> Pour vous rendre vos rapports
   achetés si vous réinstallez l'application sur le même appareil, chaque achat vérifié
@@ -140,14 +163,24 @@
   technique de l'application sur votre appareil (Android ID) :</p>
   <ul>
     <li>l'Android ID n'est <strong>jamais conservé tel quel</strong> : seule une empreinte
-    irréversible (hachage) sert à ranger l'enregistrement ;</li>
-    <li>le justificatif d'achat Google Play, la position et l'adresse du bien acheté sont
-    <strong>chiffrés</strong> avec une clé dérivée de l'Android ID, que nous ne conservons
-    pas : ils ne sont lisibles qu'à la demande de votre appareil ;</li>
+    irréversible (hachage) sert à ranger l'enregistrement, sous un identifiant qui ne
+    peut pas être rapproché du bien sans votre appareil ;</li>
+    <li>le justificatif d'achat Google Play, la position, l'adresse, le prix et la surface
+    du bien acheté sont <strong>chiffrés</strong> avec une clé dérivée de l'Android ID,
+    que nous ne conservons pas : ils ne sont lisibles que lorsque votre appareil les
+    demande ;</li>
+    <li>au premier lancement après une installation, l'application demande ces achats
+    automatiquement, en envoyant l'Android ID et un jeton Google Play Integrity qui prouve
+    que la demande vient bien de cet appareil ;</li>
     <li>ces données sont conservées sur les serveurs de Google Cloud (Firestore, Union
     européenne), uniquement pour vous rendre vos achats (exécution du contrat d'achat),
     et supprimées au plus tard 3 ans après l'achat.</li>
   </ul>
+  <p>Dans l'achat Google Play lui-même, l'application inscrit l'empreinte du bien
+  acheté, pour que l'achat ne débloque que ce logement. C'est une donnée pseudonyme :
+  elle permet à l'éditeur de retrouver le bien concerné par un achat (par exemple pour
+  traiter une réclamation). Elle est conservée par Google avec l'historique de la
+  commande.</p>
   <p>Vous pouvez demander leur suppression à l'adresse de contact ci-dessous.</p>
 
   <h2>7. Rapports d'erreur</h2>
