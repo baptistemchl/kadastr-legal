@@ -83,7 +83,12 @@
   vite à la demande suivante), l'adresse IP de connexion, au plus 24 heures, pour
   limiter les abus (nombre de demandes par adresse), et, pour un appareil qui a demandé
   le rapport offert, l'empreinte de l'appareil et celle du bien offert, au plus
-  24 heures, pour ne pas refaire la vérification à chaque ouverture. Les journaux techniques de
+  24 heures, pour ne pas refaire la vérification à chaque ouverture. Pour un achat
+  vérifié, il garde de même en mémoire, au plus 24 heures, une empreinte du justificatif
+  d'achat, celle du bien et celles des appareils qui l'ont présenté, pour ne pas
+  réinterroger Google à chaque ouverture du rapport et pour limiter les abus. Ces
+  données en mémoire ne sont écrites nulle part et sont effacées à chaque redémarrage du
+  service. Les journaux techniques de
   l'hébergeur (adresse IP, heure, page demandée, sans le contenu des demandes) sont
   conservés pour une durée limitée fixée par l'hébergeur.</p>
 
@@ -214,10 +219,11 @@
     et conservées 3 ans à compter de l'achat ; passé ce délai, le service d'analyse les
     supprime lors de son contrôle quotidien des données expirées.</li>
   </ul>
-  <p><strong>Vérification des achats.</strong> Avant de confirmer un achat auprès de
-  Google Play, l'application le fait vérifier par le service d'analyse, qui interroge
-  Google : elle transmet le justificatif d'achat et l'empreinte du bien, rien d'autre. Rien
-  n'est enregistré à cette étape.</p>
+  <p><strong>Vérification des achats</strong> (version 1.2 ou suivante). Avant de
+  confirmer un achat auprès de Google Play, l'application le fait vérifier par le service
+  d'analyse, qui interroge Google : elle transmet le justificatif d'achat et l'empreinte
+  du bien, rien d'autre. Rien n'est enregistré sur nos serveurs à cette étape : le
+  service en garde seulement en mémoire les empreintes, au plus 24 heures (section 2).</p>
   <p>Dans l'achat Google Play lui-même, l'application inscrit l'empreinte du bien
   acheté, pour que l'achat ne débloque que ce logement. C'est une donnée pseudonyme :
   elle permet à l'éditeur de retrouver le bien concerné par un achat (par exemple pour
